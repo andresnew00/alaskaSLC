@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School of Sustainers | Alaska SeaLife Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean-deep: #0a2a4a;
+    --ocean-mid: #1a4a7a;
+    --glacier-blue: #4e9ec6;
+    --arctic-teal: #2eb8b8;
+    --seafoam: #a8d8d0;
+    --kelp-gold: #c8a84b;
+    --bone-white: #f5f0e8;
+    --warm-white: #faf8f4;
+    --charcoal: #2a2a2a;
+    --soft-gray: #6b7280;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,42,74,0.95);
+    backdrop-filter: blur(8px);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--seafoam);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .nav-cta {
+    background: var(--arctic-teal);
+    color: white;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .nav-cta:hover { background: var(--glacier-blue); transform: scale(1.04); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--ocean-deep) 0%, var(--ocean-mid) 55%, #1a5a7a 100%);
+    position: relative;
+    display: flex; align-items: center;
+    padding: 6rem 2rem 4rem;
+    overflow: hidden;
+  }
+  .hero-bg-art {
+    position: absolute; inset: 0; z-index: 0; overflow: hidden;
+  }
+  .hero-bg-art svg {
+    position: absolute; bottom: -10%; right: -5%;
+    width: 65%; opacity: 0.07;
+    animation: float 8s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(78,158,198,0.2);
+    animation: rippleOut 6s linear infinite;
+  }
+  .ripple:nth-child(1) { width: 300px; height: 300px; bottom: 10%; right: 15%; animation-delay: 0s; }
+  .ripple:nth-child(2) { width: 500px; height: 500px; bottom: 5%; right: 10%; animation-delay: 2s; }
+  .ripple:nth-child(3) { width: 700px; height: 700px; bottom: -5%; right: 5%; animation-delay: 4s; }
+  @keyframes rippleOut {
+    0% { opacity: 0.4; transform: scale(0.9); }
+    100% { opacity: 0; transform: scale(1.1); }
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 680px;
+    animation: fadeUp 1s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--arctic-teal);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 1s ease 0.1s both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.12;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  .hero h1 span { color: var(--seafoam); }
+  .hero p {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 560px;
+    animation: fadeUp 1s ease 0.35s both;
+  }
+  .hero-btn {
+    display: inline-block;
+    background: var(--arctic-teal);
+    color: white;
+    padding: 1rem 2.4rem;
+    border-radius: 3rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    animation: fadeUp 1s ease 0.5s both;
+    box-shadow: 0 0 30px rgba(46,184,184,0.35);
+  }
+  .hero-btn:hover {
+    background: var(--kelp-gold);
+    box-shadow: 0 0 40px rgba(200,168,75,0.4);
+    transform: translateY(-2px);
+  }
+  .vsl-placeholder {
+    margin-top: 2.5rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px dashed rgba(78,158,198,0.4);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    animation: fadeUp 1s ease 0.65s both;
+  }
+
+  /* STATS BAND */
+  .stats-band {
+    background: var(--ocean-deep);
+    padding: 3rem 2rem;
+  }
+  .stats-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 2rem; text-align: center;
+  }
+  .stat-item { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+  .stat-item.visible { opacity: 1; transform: translateY(0); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--arctic-teal);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--seafoam);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* PAIN SECTION */
+  .pain-section {
+    padding: 6rem 2rem;
+    background: var(--warm-white);
+  }
+  .pain-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--arctic-teal);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .pain-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--ocean-deep);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  .pain-inner p {
+    font-size: 1.05rem;
+    color: var(--soft-gray);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .pain-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .pain-card {
+    background: var(--bone-white);
+    border-left: 3px solid var(--arctic-teal);
+    padding: 1.5rem;
+    border-radius: 4px;
+    text-align: left;
+    opacity: 0; transform: translateY(20px); transition: all 0.6s ease;
+  }
+  .pain-card.visible { opacity: 1; transform: translateY(0); }
+  .pain-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--ocean-deep);
+    margin-bottom: 0.5rem;
+  }
+  .pain-card p { font-size: 0.9rem; color: var(--soft-gray); line-height: 1.6; }
+
+  /* WHY US */
+  .why-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean-mid) 100%);
+    position: relative; overflow: hidden;
+  }
+  .why-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234e9ec6' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .why-inner {
+    max-width: 1000px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .why-inner .section-label { color: var(--seafoam); }
+  .why-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: white; font-weight: 700; margin-bottom: 1rem; line-height: 1.2;
+  }
+  .why-inner > p {
+    font-size: 1.05rem; color: rgba(255,255,255,0.75);
+    line-height: 1.75; max-width: 660px; margin-bottom: 3rem;
+  }
+  .proof-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 1.5rem; margin-bottom: 3rem;
+  }
+  .proof-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(78,158,198,0.25);
+    border-radius: 10px;
+    padding: 1.8rem;
+    opacity: 0; transform: translateY(20px); transition: all 0.6s ease;
+  }
+  .proof-card.visible { opacity: 1; transform: translateY(0); }
+  .proof-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900;
+    color: var(--arctic-teal); margin-bottom: 0.3rem;
+  }
+  .proof-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .testimonial-block {
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--kelp-gold);
+    padding: 1.8rem 2rem;
+    border-radius: 0 10px 10px 0;
+    max-width: 700px;
+  }
+  .testimonial-block blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: rgba(255,255,255,0.85);
+    font-style: italic; line-height: 1.65; margin-bottom: 0.8rem;
+  }
+  .testimonial-block cite {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem; color: var(--seafoam);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* 3 STEPS */
+  .steps-section {
+    padding: 6rem 2rem;
+    background: var(--warm-white);
+  }
+  .steps-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .steps-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--ocean-deep); font-weight: 700; margin-bottom: 0.8rem;
+  }
+  .steps-inner > p {
+    font-size: 1rem; color: var(--soft-gray); margin-bottom: 3.5rem;
+  }
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 2rem; margin-bottom: 2.5rem;
+  }
+  .step-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 24px rgba(10,42,74,0.08);
+    text-align: center;
+    opacity: 0; transform: translateY(20px); transition: all 0.6s ease;
+    border-top: 3px solid var(--arctic-teal);
+  }
+  .step-card.visible { opacity: 1; transform: translateY(0); }
+  .step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; color: var(--arctic-teal);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .step-icon {
+    font-size: 2.5rem; margin-bottom: 1rem; display: block;
+  }
+  .step-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--ocean-deep);
+    margin-bottom: 0.8rem;
+  }
+  .step-card p { font-size: 0.9rem; color: var(--soft-gray); line-height: 1.6; }
+  .step-connector {
+    display: none;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--ocean-deep);
+    color: white;
+    padding: 1rem 2.4rem;
+    border-radius: 3rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    box-shadow: 0 4px 20px rgba(10,42,74,0.2);
+  }
+  .cta-btn:hover {
+    background: var(--arctic-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(46,184,184,0.3);
+  }
+
+  /* SOCIAL PROOF 2 */
+  .social-section {
+    padding: 5rem 2rem;
+    background: var(--bone-white);
+  }
+  .social-inner { max-width: 900px; margin: 0 auto; }
+  .social-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--ocean-deep);
+    text-align: center; margin-bottom: 0.5rem;
+  }
+  .social-inner > p { text-align: center; color: var(--soft-gray); margin-bottom: 3rem; }
+  .creds-bar {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    justify-content: center; align-items: center;
+    margin-bottom: 3rem;
+  }
+  .cred-pill {
+    background: white;
+    border: 1px solid rgba(10,42,74,0.12);
+    border-radius: 3rem;
+    padding: 0.5rem 1.2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--ocean-mid);
+    letter-spacing: 0.08em;
+  }
+  .quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 640px) { .quote-grid { grid-template-columns: 1fr; } }
+  .quote-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.8rem;
+    box-shadow: 0 2px 16px rgba(10,42,74,0.07);
+    opacity: 0; transform: translateY(20px); transition: all 0.6s ease;
+  }
+  .quote-card.visible { opacity: 1; transform: translateY(0); }
+  .quote-card blockquote {
+    font-size: 0.95rem; color: var(--charcoal); line-height: 1.65;
+    font-style: italic; margin-bottom: 0.8rem;
+  }
+  .quote-card cite {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; color: var(--glacier-blue); letter-spacing: 0.08em;
+  }
+
+  /* DONATION FORM */
+  .donate-section {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, var(--ocean-deep) 0%, #0d3d60 100%);
+    text-align: center;
+  }
+  .donate-section .section-label { color: var(--seafoam); }
+  .donate-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: white; font-weight: 700; margin-bottom: 1rem;
+  }
+  .donate-section > p {
+    color: rgba(255,255,255,0.75); font-size: 1rem;
+    margin-bottom: 2.5rem; max-width: 580px; margin-left: auto; margin-right: auto;
+    line-height: 1.7;
+  }
+  .tier-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 1.5rem; max-width: 900px; margin: 0 auto 2.5rem;
+  }
+  .tier-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(78,158,198,0.3);
+    border-radius: 14px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+  .tier-card:hover, .tier-card.active {
+    background: rgba(46,184,184,0.15);
+    border-color: var(--arctic-teal);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(46,184,184,0.2);
+  }
+  .tier-card.featured {
+    border-color: var(--kelp-gold);
+    background: rgba(200,168,75,0.1);
+  }
+  .tier-card.featured:hover, .tier-card.featured.active {
+    background: rgba(200,168,75,0.2);
+    border-color: var(--kelp-gold);
+    box-shadow: 0 12px 40px rgba(200,168,75,0.2);
+  }
+  .tier-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem; color: var(--seafoam);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .tier-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; color: white; font-weight: 900;
+    margin-bottom: 0.2rem;
+  }
+  .tier-price span { font-size: 1rem; font-weight: 400; opacity: 0.6; }
+  .tier-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.5; margin-top: 0.8rem; }
+  .donate-form-placeholder {
+    background: rgba(255,255,255,0.06);
+    border: 1px dashed rgba(78,158,198,0.35);
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 500px; margin: 0 auto;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em;
+  }
+
+  /* FAQs */
+  .faq-section {
+    padding: 6rem 2rem;
+    background: var(--warm-white);
+  }
+  .faq-inner { max-width: 760px; margin: 0 auto; }
+  .faq-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--ocean-deep);
+    text-align: center; margin-bottom: 3rem;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(10,42,74,0.1);
+    padding: 1.4rem 0;
+  }
+  .faq-q {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--ocean-deep);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem;
+  }
+  .faq-q::after {
+    content: '+';
+    font-size: 1.4rem; color: var(--arctic-teal);
+    flex-shrink: 0; transition: transform 0.25s;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 0.95rem; color: var(--soft-gray); line-height: 1.7;
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    padding-top: 0;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-top: 0.8rem; }
+
+  /* EMAIL OPTIN */
+  .optin-section {
+    padding: 5rem 2rem;
+    background: var(--seafoam);
+    text-align: center;
+  }
+  .optin-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--ocean-deep); margin-bottom: 0.8rem;
+  }
+  .optin-section p { color: var(--ocean-mid); font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6; }
+  .optin-form {
+    display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;
+    max-width: 480px; margin: 0 auto;
+  }
+  .optin-form input[type="email"] {
+    flex: 1; min-width: 220px;
+    padding: 0.85rem 1.2rem;
+    border: none; border-radius: 3rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+  }
+  .optin-form button {
+    background: var(--ocean-deep); color: white;
+    border: none; padding: 0.85rem 1.8rem;
+    border-radius: 3rem; cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .optin-form button:hover { background: var(--arctic-teal); }
+  .optin-unsub { font-size: 0.8rem; color: var(--ocean-mid); margin-top: 1rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ocean-deep);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--seafoam); font-size: 1.2rem; margin-bottom: 0.5rem;
+  }
+  footer p {
+    font-size: 0.82rem; color: rgba(255,255,255,0.4);
+    line-height: 1.6; max-width: 500px; margin: 0 auto 1rem;
+  }
+  footer a { color: var(--arctic-teal); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .tier-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Alaska SeaLife Center</div>
+  <a href="#donate" class="nav-cta">Join the School</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-art">
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="200" cy="150" rx="180" ry="90" stroke="white" stroke-width="1"/>
+      <ellipse cx="200" cy="150" rx="140" ry="65" stroke="white" stroke-width="1"/>
+      <ellipse cx="200" cy="150" rx="100" ry="45" stroke="white" stroke-width="1"/>
+      <path d="M80 150 Q200 80 320 150 Q200 220 80 150Z" stroke="white" stroke-width="0.5" fill="none"/>
+      <circle cx="200" cy="150" r="20" stroke="white" stroke-width="1.5" fill="none"/>
+      <path d="M160 120 Q200 90 240 120" stroke="white" stroke-width="0.5" fill="none"/>
+      <path d="M150 150 Q175 130 200 150 Q225 130 250 150" stroke="white" stroke-width="0.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Alaska SeaLife Center &bull; Seward, AK</div>
+    <h1>Alaska's oceans need a <span>school of their own</span>.</h1>
+    <p>The Alaska SeaLife Center is the only facility in the state that rescues injured marine wildlife, conducts frontline ocean research, and educates the next generation of ocean stewards. Your monthly gift keeps this critical work running 365 days a year.</p>
+    <a href="#donate" class="hero-btn">Join the School of Sustainers</a>
+    <div class="vsl-placeholder">[ VSL VIDEO PLACEHOLDER — Insert 60-90 second mission overview video here ]</div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years of Science &amp; Service</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">153</div>
+      <div class="stat-label">Species in Our Care (2023)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1 of 1</div>
+      <div class="stat-label">Marine Rehab Facility in Alaska</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">$10.7M</div>
+      <div class="stat-label">Revenue Powering the Mission</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <div class="section-label">The Problem</div>
+    <h2>Alaska's ocean wildlife has no one else to call.</h2>
+    <p>When a sea otter pup washes ashore orphaned, when a stranded seal needs emergency care, when harbor seal populations start declining and no one knows why, the Alaska SeaLife Center is the only institution authorized to respond. That is not a small thing. It is an enormous responsibility, and it depends entirely on people like you.</p>
+    <div class="pain-cards">
+      <div class="pain-card">
+        <h4>Climate change is reshaping Alaska's ocean.</h4>
+        <p>Marine heatwaves, shifting prey populations, and warming waters are driving more wildlife strandings and making scientific monitoring more urgent than ever.</p>
+      </div>
+      <div class="pain-card">
+        <h4>Seasonal funding leaves gaps in critical programs.</h4>
+        <p>Visitor revenue spikes in summer and dips in winter. But the animals that need care and the research that must continue do not take a seasonal break.</p>
+      </div>
+      <div class="pain-card">
+        <h4>Caring people feel helpless from a distance.</h4>
+        <p>You love Alaska's wildlife. You follow the rescue stories. But without a simple, direct way to plug in, that feeling of wanting to help stays just out of reach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="section-label">Why It Works</div>
+    <h2>Your $25 a month does something most donations never do.</h2>
+    <p>Most donations come in once and disappear. Monthly gifts create a current, a steady, dependable force that funds rescue operations in January, research projects in March, and education programs all summer long. You become the infrastructure that makes everything else possible.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="num">9 of 10</div>
+        <p>Harbor seals admitted in 2023 were successfully rehabilitated and released back into the wild, thanks to the work of our Wildlife Response team.</p>
+      </div>
+      <div class="proof-card">
+        <div class="num">15</div>
+        <p>Active research projects running through the Center in 2023, studying everything from Steller sea lion diets to the health of Arctic seal populations.</p>
+      </div>
+      <div class="proof-card">
+        <div class="num">9,962</div>
+        <p>Education program participants reached in 2023 through day programs, nocturnes, distance learning, and Road Scholars, connecting Alaskans to their ocean.</p>
+      </div>
+    </div>
+    <div class="testimonial-block">
+      <blockquote>"The Alaska SeaLife Center is doing work that no one else in the state is equipped to do. The wildlife response program, the research, the education outreach. It is irreplaceable."</blockquote>
+      <cite>Community Supporter, Seward AK &bull; [TESTIMONIAL PLACEHOLDER — swap with real donor quote]</cite>
+    </div>
+  </div>
+</section>
+
+<!-- 3 STEPS -->
+<section class="steps-section">
+  <div class="steps-inner">
+    <div class="section-label">How It Works</div>
+    <h2>Three steps from here to impact.</h2>
+    <p>Becoming a monthly sustainer is simple. Here is what happens when you join.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">Step 01</div>
+        <span class="step-icon">🐟</span>
+        <h3>Choose Your Level</h3>
+        <p>Pick a monthly amount that feels right, whether it is $15, $50, or $100. Every level makes you part of the School of Sustainers, our community of ocean champions.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 02</div>
+        <span class="step-icon">🔬</span>
+        <h3>We Put It to Work</h3>
+        <p>Your gift funds year-round wildlife rescues, ongoing science projects, and hands-on education programs that connect Alaskans to their marine environment.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 03</div>
+        <span class="step-icon">🌊</span>
+        <h3>Watch the Impact Unfold</h3>
+        <p>Receive monthly impact updates, real rescue stories, and behind-the-scenes access to the science and care you are making possible, every single month.</p>
+      </div>
+    </div>
+    <a href="#donate" class="cta-btn">Become a Sustainer Today</a>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF 2 -->
+<section class="social-section">
+  <div class="social-inner">
+    <div class="section-label" style="text-align:center;">Credibility</div>
+    <h2>Trusted by Alaska. Recognized Nationally.</h2>
+    <p>The Alaska SeaLife Center is not just a local institution. It is a nationally accredited, GuideStar Platinum-rated organization that sets the standard for marine science and animal care in the North Pacific.</p>
+    <div class="creds-bar">
+      <div class="cred-pill">AZA Accredited</div>
+      <div class="cred-pill">GuideStar Platinum 2025</div>
+      <div class="cred-pill">TripAdvisor Certificate of Excellence</div>
+      <div class="cred-pill">Alaska Green Star Certified</div>
+      <div class="cred-pill">Featured on PBS Nature</div>
+      <div class="cred-pill">NOAA & USFWS Authorized</div>
+    </div>
+    <div class="quote-grid">
+      <div class="quote-card">
+        <blockquote>"Uki the Walrus's rehabilitation story was featured in the PBS Nature season premiere. The care and science that went into that rescue is exactly why this Center matters."</blockquote>
+        <cite>PBS Nature &bull; October 2025</cite>
+      </div>
+      <div class="quote-card">
+        <blockquote>"The Center responded to our first ringed seal case in over four years, one of only 30 ever admitted in more than 25 years of operation. That kind of expertise is irreplaceable."</blockquote>
+        <cite>ASLC News Release &bull; January 2026</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATION FORM -->
+<section class="donate-section" id="donate">
+  <div class="section-label">Join Today</div>
+  <h2>Choose your place in the School of Sustainers.</h2>
+  <p>Pick your monthly giving level and become a permanent current in the work that keeps Alaska's oceans healthy, wild, and studied year-round.</p>
+  <div class="tier-cards">
+    <div class="tier-card" onclick="this.classList.toggle('active')">
+      <div class="tier-name">Smolt &bull; Tier 1</div>
+      <div class="tier-price">$15<span>/mo</span></div>
+      <p>Monthly impact email, name on our digital donor wall, and the knowledge that you are part of something bigger.</p>
+    </div>
+    <div class="tier-card featured" onclick="this.classList.toggle('active')">
+      <div class="tier-name">Kelp &bull; Tier 2 (Most Popular)</div>
+      <div class="tier-price">$50<span>/mo</span></div>
+      <p>Everything in Tier 1, plus quarterly behind-the-scenes updates from our scientists and a handwritten thank-you note from the team.</p>
+    </div>
+    <div class="tier-card" onclick="this.classList.toggle('active')">
+      <div class="tier-name">Orca &bull; Tier 3</div>
+      <div class="tier-price">$100<span>/mo</span></div>
+      <p>Everything in Tier 2, plus an annual impact call with our team, early access to our annual report, and recognition as a founding community guardian.</p>
+    </div>
+  </div>
+  <div class="donate-form-placeholder">
+    [ DONATION FORM EMBED — Suggested defaults: $15 / $50 / $100 / Custom<br>Connect to existing Blackbaud giving portal at alaskasealife.org/join_the_school_of_sustainers ]
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <h2>Questions? We have answers.</h2>
+    <div class="faq-item">
+      <div class="faq-q">Where does my monthly gift actually go?</div>
+      <div class="faq-a">Your gift supports the Alaska SeaLife Center's three core programs: wildlife rescue and rehabilitation, ongoing marine science research, and hands-on education for students and communities across Alaska. In 2023, the Center spent over $2.7 million directly on research, education, and wildlife response programs combined.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel my monthly gift at any time?</div>
+      <div class="faq-a">Yes, absolutely. You can cancel or change your recurring donation at any time by calling Development Associate Laura Swihart at 907-224-6337 or emailing development@alaskasealife.org. There are no penalties and no questions asked.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my donation tax-deductible?</div>
+      <div class="faq-a">Yes. The Alaska SeaLife Center is a registered 501(c)(3) nonprofit under its legal name, Seward Association for the Advancement of Marine Science. Tax ID: 92-0132479. You will receive a year-end giving summary for your records.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does the Center use my information?</div>
+      <div class="faq-a">The Alaska SeaLife Center keeps all donor information secure and confidential. Your information is never sold to third parties. You can review the full privacy policy at alaskasealife.org/privacy.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the School of Sustainers?</div>
+      <div class="faq-a">The School of Sustainers is the Alaska SeaLife Center's monthly giving community. Just as salmon thrive in the community of a school, the Center relies on a community of recurring donors to stay strong, season to season. Members receive exclusive impact updates and recognition throughout the year.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does the Center respond to wildlife emergencies?</div>
+      <div class="faq-a">The Alaska SeaLife Center operates the only institution in Alaska authorized to rehabilitate live stranded marine mammals. We operate under permits from NOAA and the U.S. Fish and Wildlife Service, and remain in a ready state year-round to respond to strandings, oil spills, and unusual wildlife events anywhere in Alaska.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does the Center only serve Seward or all of Alaska?</div>
+      <div class="faq-a">Both. While the Center is physically located in Seward on the shores of Resurrection Bay, our wildlife response program covers all of Alaska, our research studies populations across the North Pacific, and our education programs reach students in Seward and far beyond through distance learning and outreach.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is the Alaska SeaLife Center different from a regular aquarium?</div>
+      <div class="faq-a">The Alaska SeaLife Center is the only facility in Alaska that combines a public aquarium with active marine research, wildlife rehabilitation, and ocean education. Visitors do not just see animals. They see the science happening in real time, because it is the same facility where the research and rescue work actually takes place.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I volunteer or get involved beyond donating?</div>
+      <div class="faq-a">Yes! The Center welcomes volunteers, and there are also internship, externship, and employment opportunities for those who want a deeper connection to the mission. Visit alaskasealife.org/volunteer to learn more about how to get involved in person.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I know the Center is financially responsible?</div>
+      <div class="faq-a">The Alaska SeaLife Center holds GuideStar Platinum status for 2025, the highest level of nonprofit transparency. Full financial statements and annual reports are publicly available at alaskasealife.org/annual_and_financial_reports. The Center is also fully accredited by the Association of Zoos and Aquariums.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL OPT-IN -->
+<section class="optin-section">
+  <h2>Stay connected to the mission.</h2>
+  <p>Not ready to commit monthly? Sign up for stories from the field: rescue updates, science breakthroughs, and behind-the-scenes moments from Seward, delivered to your inbox.</p>
+  <div class="optin-form">
+    <input type="email" placeholder="your@email.com">
+    <button type="button">Send Me Stories</button>
+  </div>
+  <p class="optin-unsub">Unsubscribe anytime. No spam, ever.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Alaska SeaLife Center</div>
+  <p>301 Railway Avenue, Seward, Alaska 99664<br>
+  (907) 224-6300 &bull; <a href="mailto:development@alaskasealife.org">development@alaskasealife.org</a><br>
+  Legal Name: Seward Association for the Advancement of Marine Science &bull; EIN: 92-0132479</p>
+  <p><a href="https://www.alaskasealife.org">alaskasealife.org</a> &bull; <a href="https://www.alaskasealife.org/uploads/pdfs/privacy_policy.pdf">Privacy Policy</a></p>
+  <p style="margin-top:1.2rem; font-size:0.75rem; opacity:0.35;">501(c)(3) Nonprofit &bull; All donations tax-deductible &bull; &copy;2026 Alaska SeaLife Center</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.stat-item, .pain-card, .proof-card, .step-card, .quote-card').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Staggered delays
+  document.querySelectorAll('.stat-item').forEach((el, i) => { el.style.transitionDelay = `${i * 0.12}s`; });
+  document.querySelectorAll('.pain-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+  document.querySelectorAll('.step-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+  document.querySelectorAll('.proof-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.12}s`; });
+  document.querySelectorAll('.quote-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
